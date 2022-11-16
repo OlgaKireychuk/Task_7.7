@@ -2,28 +2,3 @@
     height: 100vh;
     font-family: 'Open Sans', monospace;
 }
-body {
-    background-color: #171C71;
-}
-
-.card {
-    background-color: #be9420;
-    color: white;
-    height: 300px;
-    width: 400px;
-}
-
-.btn {
-    background-color: #195DA5;
-}
-#btnEqual {
-    background-color: #057E1A;
-}
-#btnRetry {
-    background-color: #A41207;
-    color: white;
-    text-decoration: none;
-}
-#btnRetry:hover {
-    background-color: #FE877D;
-}
