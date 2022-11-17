@@ -231,16 +231,16 @@ document.getElementById('btnRetry').addEventListener('click', start);
 /*Кнопка "Больше"*/
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
-        if ((minValue === maxValue) || (minValue > maxValue)) {
-            const phraseRandom = Math.round( Math.random());
-            const answerPhrase = (phraseRandom === 1) ?
-                `Вы загадали неправильное число!\n\u{1F914}` :
-                `Я сдаюсь..\n\u{1F92F}`;
-
-            answerField.innerText = answerPhrase;
-            gameRun = false;
+            if (minValue === maxValue){
+                const phraseRandom = Math.round( Math.random());
+                const answerPhrase = (phraseRandom === 1) ?
+                    `Вы загадали неправильное число!\n\u{1F914}` :
+                    `Я сдаюсь..\n\u{1F92F}`;
+    
+                answerField.innerText = answerPhrase;
+                gameRun = false;
         } else {
-            minValue = answerNumber  ++;
+            minValue = answerNumber  + 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
@@ -253,7 +253,7 @@ document.getElementById('btnOver').addEventListener('click', function () {
 /*Кнопка "Меньше"*/
 document.getElementById('btnLess').addEventListener('click', function () {
     if (gameRun){
-        if ((minValue == maxValue) || (minValue > maxValue)){
+        if (minValue === answerNumber){
             const phraseRandom = Math.round( Math.random());
             const answerPhrase = (phraseRandom === 1) ?
                 `Вы загадали неправильное число!\n\u{1F914}` :
@@ -262,8 +262,11 @@ document.getElementById('btnLess').addEventListener('click', function () {
             answerField.innerText = answerPhrase;
             gameRun = false;
         } else {
-            maxValue = answerNumber  --;
+            maxValue = answerNumber  - 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
+            console.log(answerNumber);
+            console.log(minValue);
+            console.log(maxValue)
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             chooseAnswerRandom ();
