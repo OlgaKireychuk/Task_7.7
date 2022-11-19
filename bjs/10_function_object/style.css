@@ -1,0 +1,23 @@
+body {
+    background-color: #EBDAB4;
+}
+
+
+.card {
+    background-color: #A2D4C0;
+    color: black;
+    height: 400px;
+    width: 400px;
+    font-family: 'Open Sans', monospace;
+    margin-top: 200px;
+}
+
+
+.btn {
+    background-color: #684085;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #FE877D;
+}
