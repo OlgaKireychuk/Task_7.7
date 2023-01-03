@@ -4,13 +4,16 @@
 }
 body {
     background-color: #171C71;
+    
 }
 
 .card {
+
     background-color: #be9420;
     color: white;
-    height: 300px;
+    height: 400px;
     width: 400px;
+    padding: 10px;
 }
 
 .btn {

@@ -10,6 +10,10 @@ let answerNumberAbs; /*Модуль загаданного числа*/
 let answerText; /*Текстовое представление загаданного числа*/
 let answerFinal; /*Итоговый ответ*/
 let answerPhrases; /*Фразы*/
+let inputNumberPage = document.getElementById('inputNumberPage');
+let startPage = document.getElementById('startPage');
+let startPageText = document.getElementById('startPageText');
+let gamePage = document.getElementById('gamePage');
 
 const orderNumberField = document.getElementById('orderNumberField');
 const answerField = document.getElementById('answerField');
@@ -206,21 +210,38 @@ function chooseAnswerRandom () {
 
 /*Запуск игры*/
 function start () {
-    orderNumber = 1;
-    minValue = parseInt(prompt('Минимальное знание числа для игры','-999'));
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','999'));
-    minValue < -999 || isNaN(minValue) ?
-        minValue = -999 :
-        minValue = minValue;
-    maxValue > 999 || isNaN(maxValue) ?
-        maxValue = 999 : 
-        maxValue = maxValue;
-    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-    answerNumber  = Math.floor((minValue + maxValue) / 2);
-    gameRun = true;
-    orderNumberField.innerText = orderNumber;
-    chooseAnswerRandom ();
-    answerField.innerText = answerPhrases;
+    inputNumberPage.style.display = 'block';
+    startPage.style.display= 'none';
+    gamePage.style.display = 'none';
+    document.getElementById('btnNext').addEventListener('click', function (event) {
+        minValue = parseInt(document.getElementById('minValue').value);
+        maxValue = parseInt(document.getElementById('maxValue').value);
+        minValue < -999 || isNaN(minValue) ?
+            minValue = -999 :
+            minValue = minValue;
+        maxValue > 999 || isNaN(maxValue) ?
+            maxValue = 999 : 
+            maxValue = maxValue;
+        inputNumberPage.style.display = 'none';
+        startPage.style.display= 'block';
+        startPageText.innerText =`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`;
+
+    });
+    document.getElementById('btnStart').addEventListener('click', function (event) {
+        console.log(minValue);
+        console.log(maxValue);
+        answerNumber = Math.floor((minValue + maxValue) / 2);
+        console.log(answerNumber);
+        orderNumber = 1;
+        gameRun = true;
+        orderNumberField.innerText = orderNumber;
+        chooseAnswerRandom ();
+        answerField.innerText = answerPhrases;
+        startPage.style.display= 'none';
+        gamePage.style.display = 'block';
+        document.getElementById('minValue').value = '';
+        document.getElementById('maxValue').value = '';
+    });
 }
 
 start();
