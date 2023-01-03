@@ -218,8 +218,12 @@ function start () {
         maxValue = parseInt(document.getElementById('maxValue').value);
         minValue < -999 || isNaN(minValue) ?
             minValue = -999 :
+            minValue > 999 ?
+            minValue = -999 :
             minValue = minValue;
         maxValue > 999 || isNaN(maxValue) ?
+            maxValue = 999 : 
+            maxValue < -999 || maxValue < minValue ?
             maxValue = 999 : 
             maxValue = maxValue;
         inputNumberPage.style.display = 'none';
